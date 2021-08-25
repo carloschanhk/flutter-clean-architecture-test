@@ -1,18 +1,15 @@
-import 'package:flutter/cupertino.dart';
+import 'package:clean_architecture_test/live_data_module/live_data.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class CounterPageViewModel extends ChangeNotifier {
-  int _counter = 0;
-  int get counter => _counter;
+class CounterPageViewModel {
+  final LiveData<int> counterLiveData = LiveData(0);
 
   void increment() {
-    _counter++;
-    notifyListeners();
+    counterLiveData.value = counterLiveData.value + 1;
   }
 
   void decrement() {
-    _counter--;
-    notifyListeners();
+    counterLiveData.value = counterLiveData.value - 1;
   }
 }

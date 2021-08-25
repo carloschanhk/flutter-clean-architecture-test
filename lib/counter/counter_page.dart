@@ -1,48 +1,51 @@
 import 'package:clean_architecture_test/injectible/injectible_init.dart';
+import 'package:clean_architecture_test/live_data_module/live_data.dart';
+import 'package:clean_architecture_test/live_data_module/live_data_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 import 'counter_page_view_model.dart';
 
-//This class is just for testing. Nth special here.
+//This class is showing how to use the custom LiveDataWidget.
 class CounterPage extends StatelessWidget {
   const CounterPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => getIt<CounterPageViewModel>(),
-      builder: (context, _) {
-        final counterPageViewModel = context.watch<CounterPageViewModel>();
-        return Scaffold(
-          appBar: AppBar(
-            title: Text("Counter"),
+    //Inject viewmodel in the beginning
+    final CounterPageViewModel counterPageViewModel =
+        getIt<CounterPageViewModel>();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Counter"),
+      ),
+      body: Center(
+        // Consume the LiveData value
+        child: LiveDataWidget<LiveData<int>>(
+          data: counterPageViewModel.counterLiveData,
+          builder: (context, data, _) {
+            return Text("${data.value}");
+          },
+        ),
+      ),
+      floatingActionButton: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5.0),
+            child: FloatingActionButton(
+              child: const Icon(Icons.add),
+              onPressed: () => counterPageViewModel.increment(),
+            ),
           ),
-          body: Center(
-            child: Text("${counterPageViewModel.counter}"),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5.0),
+            child: FloatingActionButton(
+              child: const Icon(Icons.remove),
+              onPressed: () => counterPageViewModel.decrement(),
+            ),
           ),
-          floatingActionButton: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 5.0),
-                child: FloatingActionButton(
-                  child: const Icon(Icons.add),
-                  onPressed: () => counterPageViewModel.increment(),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 5.0),
-                child: FloatingActionButton(
-                  child: const Icon(Icons.remove),
-                  onPressed: () => counterPageViewModel.decrement(),
-                ),
-              ),
-            ],
-          ),
-        );
-      },
+        ],
+      ),
     );
   }
 }
