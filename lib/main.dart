@@ -1,11 +1,10 @@
-import 'package:clean_architecture_test/counter/counter_page.dart';
-import 'package:clean_architecture_test/counter/counter_page_view_model.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:clean_architecture_test/injectible/injectible_init.dart';
 import 'package:clean_architecture_test/local/note.dart';
+import 'package:clean_architecture_test/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'home/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,16 +19,17 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  final _appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return MaterialApp.router(
+      title: 'Clean Architecture',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         backgroundColor: Colors.white,
       ),
-      home: HomePage(),
+      routerDelegate: AutoRouterDelegate(_appRouter),
+      routeInformationParser: _appRouter.defaultRouteParser(),
     );
   }
 }

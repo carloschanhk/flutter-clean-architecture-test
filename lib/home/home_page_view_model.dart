@@ -1,6 +1,4 @@
-import 'package:bloc/bloc.dart';
 import 'package:clean_architecture_test/data/note_repository.dart';
-import 'package:clean_architecture_test/injectible/injectible_init.dart';
 import 'package:clean_architecture_test/local/note.dart';
 import 'package:injectable/injectable.dart';
 

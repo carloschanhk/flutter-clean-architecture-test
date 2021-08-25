@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:clean_architecture_test/injectible/injectible_init.dart';
 import 'package:clean_architecture_test/live_data_module/live_data.dart';
 import 'package:clean_architecture_test/live_data_module/live_data_widget.dart';
@@ -16,6 +17,12 @@ class CounterPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Counter"),
+        leading: IconButton(
+          onPressed: () {
+            AutoRouter.of(context).pop();
+          },
+          icon: Icon(Icons.keyboard_arrow_left),
+        ),
       ),
       body: Center(
         // Consume the LiveData value

@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:clean_architecture_test/home/home_page_view_model.dart';
 import 'package:clean_architecture_test/injectible/injectible_init.dart';
 import 'package:clean_architecture_test/local/note.dart';
+import 'package:clean_architecture_test/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 
 import 'note_editing_dialog.dart';
@@ -15,6 +17,18 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Notes"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              AutoRouter.of(context).push(const CounterPageRoute());
+            },
+            icon: Icon(
+              Icons.keyboard_arrow_right,
+              size: 30,
+            ),
+            padding: EdgeInsets.symmetric(horizontal: 40),
+          ),
+        ],
       ),
       body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
