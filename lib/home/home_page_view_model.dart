@@ -1,5 +1,5 @@
-import 'package:clean_architecture_test/data/note_repository.dart';
-import 'package:clean_architecture_test/local/note.dart';
+import 'package:clean_architecture_test/data/note/note_repository.dart';
+import 'package:clean_architecture_test/local/note/note.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable

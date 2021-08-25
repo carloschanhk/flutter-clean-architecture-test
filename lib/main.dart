@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:clean_architecture_test/injectible/injectible_init.dart';
-import 'package:clean_architecture_test/local/note.dart';
+import 'package:clean_architecture_test/local/note/note.dart';
 import 'package:clean_architecture_test/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -13,6 +13,7 @@ void main() async {
 
   Hive.registerAdapter(NoteAdapter());
   await Hive.openBox<Note>('notes');
+  await Hive.openBox<int>('count');
 
   configureDependencies();
   runApp(MyApp());

@@ -7,22 +7,28 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../counter/counter_page_view_model.dart' as _i3;
-import '../data/note_repository.dart' as _i5;
-import '../home/home_page_view_model.dart' as _i4;
-import '../local/note_datasource.dart'
-    as _i6; // ignore_for_file: unnecessary_lambdas
+import '../counter/counter_page_view_model.dart' as _i7;
+import '../data/counter/counter_repository.dart' as _i4;
+import '../data/note/note_repository.dart' as _i6;
+import '../home/home_page_view_model.dart' as _i8;
+import '../local/counter/counter_datasource.dart' as _i3;
+import '../local/note/note_datasource.dart'
+    as _i5; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
 _i1.GetIt $initGetIt(_i1.GetIt get,
     {String? environment, _i2.EnvironmentFilter? environmentFilter}) {
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
-  gh.factory<_i3.CounterPageViewModel>(() => _i3.CounterPageViewModel());
-  gh.factory<_i4.HomePageViewModel>(
-      () => _i4.HomePageViewModel(get<_i5.NoteRepository>()));
-  gh.singleton<_i6.NoteDatasource>(_i6.NoteDatasource());
-  gh.singleton<_i5.NoteRepository>(
-      _i5.NoteRepository(get<_i6.NoteDatasource>()));
+  gh.factory<_i3.CounterDatasource>(() => _i3.CounterDatasource());
+  gh.factory<_i4.CounterRepository>(
+      () => _i4.CounterRepository(get<_i3.CounterDatasource>()));
+  gh.factory<_i5.NoteDatasource>(() => _i5.NoteDatasource());
+  gh.factory<_i6.NoteRepository>(
+      () => _i6.NoteRepository(get<_i5.NoteDatasource>()));
+  gh.factory<_i7.CounterPageViewModel>(
+      () => _i7.CounterPageViewModel(get<_i4.CounterRepository>()));
+  gh.factory<_i8.HomePageViewModel>(
+      () => _i8.HomePageViewModel(get<_i6.NoteRepository>()));
   return get;
 }

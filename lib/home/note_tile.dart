@@ -1,6 +1,6 @@
 import 'package:clean_architecture_test/home/home_page_view_model.dart';
 import 'package:clean_architecture_test/injectible/injectible_init.dart';
-import 'package:clean_architecture_test/local/note.dart';
+import 'package:clean_architecture_test/local/note/note.dart';
 import 'package:flutter/material.dart';
 import 'package:styled_widget/styled_widget.dart';
 

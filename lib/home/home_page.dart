@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:clean_architecture_test/home/home_page_view_model.dart';
 import 'package:clean_architecture_test/injectible/injectible_init.dart';
-import 'package:clean_architecture_test/local/note.dart';
+import 'package:clean_architecture_test/local/note/note.dart';
 import 'package:clean_architecture_test/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 

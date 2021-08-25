@@ -1,9 +1,9 @@
-import 'package:clean_architecture_test/local/note.dart';
+import 'package:clean_architecture_test/local/note/note.dart';
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 import 'package:rxdart/rxdart.dart';
 
-@singleton
+@injectable
 class NoteDatasource {
   final noteBox = Hive.box<Note>("notes");
 
