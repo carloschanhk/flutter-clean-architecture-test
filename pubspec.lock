@@ -30,7 +30,7 @@ packages:
     source: hosted
     version: "2.6.1"
   auto_route:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: auto_route
       url: "https://pub.dartlang.org"
@@ -228,6 +228,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  get:
+    dependency: "direct main"
+    description:
+      name: get
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.3.8"
   get_it:
     dependency: transitive
     description:

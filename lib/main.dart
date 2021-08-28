@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:clean_architecture_test/injectible/injectible_init.dart';
+import 'package:clean_architecture_test/layout/home/home_page.dart';
 import 'package:clean_architecture_test/local/note/note.dart';
-import 'package:clean_architecture_test/router/app_router.gr.dart';
+import 'package:clean_architecture_test/router/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -20,17 +22,16 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final _appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    return GetMaterialApp(
+      home: HomePage(),
       title: 'Clean Architecture',
+      getPages: AppPages.pages,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         backgroundColor: Colors.white,
       ),
-      routerDelegate: AutoRouterDelegate(_appRouter),
-      routeInformationParser: _appRouter.defaultRouteParser(),
     );
   }
 }
