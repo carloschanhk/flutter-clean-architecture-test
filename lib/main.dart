@@ -1,8 +1,9 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:clean_architecture_test/injectible/injectible_init.dart';
 import 'package:clean_architecture_test/layout/home/home_page.dart';
+import 'package:clean_architecture_test/layout/home/home_page_binding.dart';
 import 'package:clean_architecture_test/local/note/note.dart';
 import 'package:clean_architecture_test/router/app_pages.dart';
+import 'package:clean_architecture_test/router/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
@@ -25,7 +26,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: HomePage(),
+      initialRoute: Routes.HOME,
+      initialBinding: HomePageBinding(),
       title: 'Clean Architecture',
       getPages: AppPages.pages,
       theme: ThemeData(

@@ -1,6 +1,7 @@
 import 'package:clean_architecture_test/injectible/injectible_init.dart';
 import 'package:clean_architecture_test/local/note/note.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:styled_widget/styled_widget.dart';
 
 import 'home_page_view_model.dart';
@@ -13,7 +14,7 @@ class NoteTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final HomePageViewModel homePageViewModel = getIt<HomePageViewModel>();
+    final HomePageViewModel homePageViewModel = Get.find<HomePageViewModel>();
     return Card(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -31,11 +32,8 @@ class NoteTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               TextButton(
-                onPressed: () => showDialog(
-                  context: context,
-                  builder: (_) => NoteEditingDialog(
-                    note: note,
-                  ),
+                onPressed: () => Get.dialog(
+                  NoteEditingDialog(note: note),
                 ),
                 child: Text("Edit"),
               ),

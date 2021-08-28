@@ -1,9 +1,10 @@
 import 'package:clean_architecture_test/data/note/note_repository.dart';
 import 'package:clean_architecture_test/local/note/note.dart';
+import 'package:get/get.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class HomePageViewModel {
+class HomePageViewModel extends GetxController {
   NoteRepository noteRepository;
   HomePageViewModel(
     this.noteRepository,
