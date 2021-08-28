@@ -1,5 +1,4 @@
 import 'package:clean_architecture_test/injectible/injectible_init.dart';
-import 'package:clean_architecture_test/layout/home/home_page.dart';
 import 'package:clean_architecture_test/layout/home/home_page_binding.dart';
 import 'package:clean_architecture_test/local/note/note.dart';
 import 'package:clean_architecture_test/router/app_pages.dart';
@@ -12,12 +11,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Hive.initFlutter();
-
-  Hive.registerAdapter(NoteAdapter());
-  await Hive.openBox<Note>('notes');
-  await Hive.openBox<int>('count');
-
+  await initHive();
   configureDependencies();
   runApp(MyApp());
 }
@@ -36,4 +30,15 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
+
+initHive() async {
+  await Hive.initFlutter();
+  registerAdapter();
+  await Hive.openBox<Note>('notes');
+  await Hive.openBox<int>('count');
+}
+
+registerAdapter() {
+  Hive.registerAdapter(NoteAdapter());
 }

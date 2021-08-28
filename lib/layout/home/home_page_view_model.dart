@@ -9,6 +9,19 @@ class HomePageViewModel extends GetxController {
   HomePageViewModel(
     this.noteRepository,
   );
+  RxList<Note> notes = <Note>[].obs;
+
+  @override
+  void onInit() {
+    initNotes();
+    super.onInit();
+  }
+
+  initNotes() {
+    noteRepository.getNoteStream().listen((updatedNotes) {
+      notes.value = updatedNotes;
+    });
+  }
 
   void addNote(Note note) {
     noteRepository.addNote(note);
@@ -20,10 +33,5 @@ class HomePageViewModel extends GetxController {
 
   void editNote(Note note) {
     note.save();
-  }
-
-  // Act like a LiveData
-  Stream<List<Note>> getNoteStream() {
-    return noteRepository.getNoteStream();
   }
 }

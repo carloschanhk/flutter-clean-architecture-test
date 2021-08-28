@@ -29,27 +29,19 @@ class HomePage extends GetView<HomePageViewModel> {
         ],
       ),
       body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: StreamBuilder<List<Note>>(
-            stream: controller.getNoteStream(),
-            builder: (context, AsyncSnapshot<List<Note>> noteStream) {
-              if (noteStream.hasData) {
-                if (noteStream.data!.length == 0) {
-                  return Text("Please add note");
-                }
-                return ListView.builder(
-                  itemCount: noteStream.data!.length,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    return NoteTile(
-                      note: noteStream.data![index],
-                    );
-                  },
-                );
-              }
-              return Text("Something goes wrong");
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: Obx(
+          () => ListView.builder(
+            itemCount: controller.notes.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              return NoteTile(
+                note: controller.notes[index],
+              );
             },
-          )),
+          ),
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () => Get.dialog(
