@@ -18,7 +18,7 @@ class HomePage extends GetView<HomePageViewModel> {
         actions: [
           IconButton(
             onPressed: () {
-              Get.toNamed(Routes.COUNTER);
+              Get.toNamed(Routes.SMS);
             },
             icon: Icon(
               Icons.keyboard_arrow_right,
