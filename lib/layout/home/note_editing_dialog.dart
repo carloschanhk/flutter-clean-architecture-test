@@ -1,6 +1,7 @@
 import 'package:clean_architecture_test/injectible/injectible_init.dart';
 import 'package:clean_architecture_test/local/note/note.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:styled_widget/styled_widget.dart';
 import 'home_page_view_model.dart';
 
@@ -18,7 +19,7 @@ class NoteEditingDialog extends StatelessWidget {
       titleController.text = note!.title;
       contentController.text = note!.content;
     }
-    final HomePageViewModel homePageViewModel = getIt<HomePageViewModel>();
+    final HomePageViewModel homePageViewModel = Get.find<HomePageViewModel>();
     return AlertDialog(
       title: Text("Note"),
       content: Form(
