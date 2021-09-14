@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class HomePageViewModel extends GetxController {
+class NotePageViewModel extends GetxController {
   NoteRepository noteRepository;
-  HomePageViewModel(
+  NotePageViewModel(
     this.noteRepository,
   );
   RxList<Note> notes = <Note>[].obs;

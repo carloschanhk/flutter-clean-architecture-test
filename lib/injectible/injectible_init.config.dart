@@ -10,7 +10,7 @@ import 'package:injectable/injectable.dart' as _i2;
 import '../data/counter/counter_repository.dart' as _i4;
 import '../data/note/note_repository.dart' as _i6;
 import '../layout/counter/counter_page_view_model.dart' as _i8;
-import '../layout/home/home_page_view_model.dart' as _i9;
+import '../layout/note/note_page_view_model.dart' as _i9;
 import '../layout/sms_verification/sms_verification_view_model.dart' as _i7;
 import '../local/counter/counter_datasource.dart' as _i3;
 import '../local/note/note_datasource.dart'
@@ -31,7 +31,7 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i7.SMSVerificationViewModel());
   gh.factory<_i8.CounterPageViewModel>(
       () => _i8.CounterPageViewModel(get<_i4.CounterRepository>()));
-  gh.factory<_i9.HomePageViewModel>(
-      () => _i9.HomePageViewModel(get<_i6.NoteRepository>()));
+  gh.factory<_i9.NotePageViewModel>(
+      () => _i9.NotePageViewModel(get<_i6.NoteRepository>()));
   return get;
 }

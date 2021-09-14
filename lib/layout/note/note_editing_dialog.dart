@@ -3,7 +3,7 @@ import 'package:clean_architecture_test/local/note/note.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:styled_widget/styled_widget.dart';
-import 'home_page_view_model.dart';
+import 'note_page_view_model.dart';
 
 class NoteEditingDialog extends StatelessWidget {
   const NoteEditingDialog({Key? key, this.note}) : super(key: key);
@@ -19,7 +19,7 @@ class NoteEditingDialog extends StatelessWidget {
       titleController.text = note!.title;
       contentController.text = note!.content;
     }
-    final HomePageViewModel homePageViewModel = Get.find<HomePageViewModel>();
+    final NotePageViewModel homePageViewModel = Get.find<NotePageViewModel>();
     return AlertDialog(
       title: Text("Note"),
       content: Form(

@@ -10,12 +10,6 @@ class CounterPage extends GetView<CounterPageViewModel> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Counter"),
-        leading: IconButton(
-          onPressed: () {
-            Get.back();
-          },
-          icon: Icon(Icons.keyboard_arrow_left),
-        ),
       ),
       body: Center(
         // Consume the LiveData value

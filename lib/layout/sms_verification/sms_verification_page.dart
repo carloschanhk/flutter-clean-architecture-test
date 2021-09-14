@@ -12,12 +12,7 @@ class SMSVerificationPage extends GetView<SMSVerificationViewModel> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.keyboard_arrow_left),
-            onPressed: () {
-              Get.back();
-            },
-          ),
+          title: Text("SMS Verification"),
         ),
         body: Form(
           key: controller.formKey,

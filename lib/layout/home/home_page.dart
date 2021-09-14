@@ -1,53 +1,67 @@
-import 'package:clean_architecture_test/local/note/note.dart';
 import 'package:clean_architecture_test/router/app_routes.dart';
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
-import 'home_page_view_model.dart';
-import 'note_editing_dialog.dart';
-import 'note_tile.dart';
-
-class HomePage extends GetView<HomePageViewModel> {
+class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Notes"),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Get.toNamed(Routes.SMS);
-            },
-            icon: Icon(
-              Icons.keyboard_arrow_right,
-              size: 30,
-            ),
-            padding: EdgeInsets.symmetric(horizontal: 40),
+        title: Text("Clean Architecture"),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          HomeNavigationButton(
+            route: Routes.NOTE,
+            text: "Note",
+          ),
+          HomeNavigationButton(
+            route: Routes.COUNTER,
+            text: "Counter",
+          ),
+          HomeNavigationButton(
+            route: Routes.SMS,
+            text: "SMS",
           ),
         ],
-      ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: Obx(
-          () => ListView.builder(
-            itemCount: controller.notes.length,
-            shrinkWrap: true,
-            itemBuilder: (context, index) {
-              return NoteTile(
-                note: controller.notes[index],
-              );
-            },
+      ).paddingSymmetric(horizontal: 20),
+    );
+  }
+}
+
+class HomeNavigationButton extends StatelessWidget {
+  const HomeNavigationButton({
+    Key? key,
+    @required this.route,
+    @required this.text,
+  }) : super(key: key);
+
+  final route;
+  final text;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: TextButton(
+        onPressed: () {
+          Get.toNamed(route);
+        },
+        child: Text(
+          text,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => Get.dialog(
-          NoteEditingDialog(),
+        style: TextButton.styleFrom(
+          backgroundColor: Colors.blue,
         ),
-      ),
+      ).paddingSymmetric(vertical: 10, horizontal: 20),
     );
   }
 }

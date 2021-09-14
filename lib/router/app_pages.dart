@@ -1,7 +1,8 @@
 import 'package:clean_architecture_test/layout/counter/counter_page_binding.dart';
 import 'package:clean_architecture_test/layout/counter/counter_page.dart';
 import 'package:clean_architecture_test/layout/home/home_page.dart';
-import 'package:clean_architecture_test/layout/home/home_page_binding.dart';
+import 'package:clean_architecture_test/layout/note/note_page.dart';
+import 'package:clean_architecture_test/layout/note/note_page_binding.dart';
 import 'package:clean_architecture_test/layout/sms_verification/sms_verification_binding.dart';
 import 'package:clean_architecture_test/layout/sms_verification/sms_verification_page.dart';
 import 'package:get/get.dart';
@@ -13,7 +14,11 @@ class AppPages {
     GetPage(
       name: Routes.HOME,
       page: () => HomePage(),
-      binding: HomePageBinding(),
+    ),
+    GetPage(
+      name: Routes.NOTE,
+      page: () => NotePage(),
+      binding: NotePageBinding(),
     ),
     GetPage(
       name: Routes.COUNTER,

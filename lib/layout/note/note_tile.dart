@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:styled_widget/styled_widget.dart';
 
-import 'home_page_view_model.dart';
+import 'note_page_view_model.dart';
 import 'note_editing_dialog.dart';
 
 class NoteTile extends StatelessWidget {
@@ -14,7 +14,7 @@ class NoteTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final HomePageViewModel homePageViewModel = Get.find<HomePageViewModel>();
+    final NotePageViewModel homePageViewModel = Get.find<NotePageViewModel>();
     return Card(
       child: Column(
         mainAxisSize: MainAxisSize.min,
